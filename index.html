@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de Despachos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📦</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-logo">📦</span>
+        <div>
+          <div class="brand-title">Despachos</div>
+          <div class="brand-sub">Control de entregas</div>
+        </div>
+      </div>
+
+      <div class="client-box">
+        <label for="clientSelect">Cliente</label>
+        <select id="clientSelect"></select>
+        <div class="client-actions">
+          <button class="btn btn-ghost btn-sm" id="btnAddClient" title="Nuevo cliente">＋ Cliente</button>
+          <button class="btn btn-ghost btn-sm" id="btnRenameClient" title="Renombrar cliente">✎</button>
+          <button class="btn btn-ghost btn-sm btn-danger-ghost" id="btnDeleteClient" title="Eliminar cliente">🗑</button>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard"><span>📊</span> Resumen</button>
+        <button class="nav-item" data-view="productos"><span>🍞</span> Productos</button>
+        <button class="nav-item" data-view="ordenes"><span>📋</span> Órdenes</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-ghost btn-block" id="btnExport">⬇ Exportar</button>
+        <button class="btn btn-ghost btn-block" id="btnImport">⬆ Importar</button>
+        <button class="btn btn-ghost btn-block btn-danger-ghost" id="btnReset">↺ Restaurar datos</button>
+        <input type="file" id="importFile" accept="application/json" hidden />
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <h1 id="viewTitle">Resumen</h1>
+          <p id="viewSubtitle" class="muted"></p>
+        </div>
+        <div class="topbar-actions">
+          <div class="search-wrap">
+            <span class="search-ico">🔎</span>
+            <input type="search" id="searchInput" placeholder="Buscar producto u OC..." />
+          </div>
+          <select id="statusFilter" class="status-filter">
+            <option value="">Todos los estados</option>
+          </select>
+        </div>
+      </header>
+
+      <div id="viewContainer" class="view-container"></div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3 id="modalTitle">Título</h3>
+        <button class="modal-close" id="modalClose">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
