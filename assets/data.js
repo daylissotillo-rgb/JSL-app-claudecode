@@ -1,7 +1,7 @@
 // Datos semilla generados desde DESPACHO_1.xlsx (HISTORICO PARCIAL)
 // Generado automaticamente por scripts/build_data.py — no editar a mano.
 // Cliente principal precargado. La app soporta multiples clientes.
-window.SEED_VERSION = "2026-07-25T14:46:45";
+window.SEED_VERSION = "2026-07-25T17:57:00";
 window.SEED_CLIENTS = [
   {
     "cliente": "DESPACHO 1",
@@ -12,7 +12,7 @@ window.SEED_CLIENTS = [
         "ordenes": [
           {
             "fecha": "2025-08-10",
-            "oc": "18678",
+            "oc": "18678/P03314",
             "cantidadOC": "200000",
             "entregas": [
               {
@@ -24,7 +24,7 @@ window.SEED_CLIENTS = [
               },
               {
                 "entregada": "12000",
-                "documento": "41550 (P03314)",
+                "documento": "41550",
                 "fechaEntrega": "2026-12-23",
                 "saldo": "131980",
                 "estado": ""
@@ -324,7 +324,7 @@ window.SEED_CLIENTS = [
                 "entregada": "146000",
                 "documento": "41794",
                 "fechaEntrega": "2026-07-21",
-                "saldo": "108206",
+                "saldo": "4000",
                 "estado": "CERRADA"
               }
             ]
@@ -910,6 +910,27 @@ window.SEED_CLIENTS = [
         "producto": "PAN ÁRABE INTEGRAL",
         "ordenes": [
           {
+            "fecha": "2025-07-25",
+            "oc": "18501",
+            "cantidadOC": "50000",
+            "entregas": [
+              {
+                "entregada": "12000",
+                "documento": "41342",
+                "fechaEntrega": "2025-08-21",
+                "saldo": "38000",
+                "estado": ""
+              },
+              {
+                "entregada": "6600",
+                "documento": "NE32",
+                "fechaEntrega": "2025-09-08",
+                "saldo": "31400",
+                "estado": "ABIERTA"
+              }
+            ]
+          },
+          {
             "fecha": "2026-04-14",
             "oc": "P02806",
             "cantidadOC": "50000",
@@ -952,7 +973,7 @@ window.SEED_CLIENTS = [
             ]
           }
         ],
-        "totalPendiente": "50000"
+        "totalPendiente": "81400"
       },
       {
         "producto": "PAN ÁRABE BLANCO",
