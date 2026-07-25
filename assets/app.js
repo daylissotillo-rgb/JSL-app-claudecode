@@ -152,7 +152,11 @@
   function save() {
     localStorage.setItem(
       STORE_KEY,
-      JSON.stringify({ clients: state.clients, activeClientId: state.activeClientId })
+      JSON.stringify({
+        clients: state.clients,
+        activeClientId: state.activeClientId,
+        seedVersion: window.SEED_VERSION || null,
+      })
     );
   }
 
@@ -194,7 +198,13 @@
     } catch (e) {
       data = null;
     }
-    if (data && data.clients && data.clients.length) {
+    // Cuando se publica una version nueva de los datos (nuevo SEED_VERSION,
+    // generado desde DESPACHO_1.xlsx), se recarga la semilla automaticamente
+    // aunque el navegador ya tuviera datos guardados. Asi la version publicada
+    // en la web es siempre la fuente de la verdad.
+    const currentVersion = window.SEED_VERSION || null;
+    const sameVersion = !!data && data.seedVersion === currentVersion;
+    if (data && data.clients && data.clients.length && sameVersion) {
       state.clients = data.clients.map(normalizeClient);
       state.activeClientId =
         data.activeClientId && state.clients.some((c) => c.id === data.activeClientId)

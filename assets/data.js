@@ -1,5 +1,7 @@
 // Datos semilla generados desde DESPACHO_1.xlsx (HISTORICO PARCIAL)
+// Generado automaticamente por scripts/build_data.py — no editar a mano.
 // Cliente principal precargado. La app soporta multiples clientes.
+window.SEED_VERSION = "2026-07-25T14:46:45";
 window.SEED_CLIENTS = [
   {
     "cliente": "DESPACHO 1",
@@ -8,6 +10,41 @@ window.SEED_CLIENTS = [
       {
         "producto": "PAN PAL DÍA",
         "ordenes": [
+          {
+            "fecha": "2025-08-10",
+            "oc": "18678",
+            "cantidadOC": "200000",
+            "entregas": [
+              {
+                "entregada": "56020",
+                "documento": "41545",
+                "fechaEntrega": "2025-12-18",
+                "saldo": "143980",
+                "estado": ""
+              },
+              {
+                "entregada": "12000",
+                "documento": "41550 (P03314)",
+                "fechaEntrega": "2026-12-23",
+                "saldo": "131980",
+                "estado": ""
+              },
+              {
+                "entregada": "44400",
+                "documento": "41551",
+                "fechaEntrega": "2026-12-30",
+                "saldo": "87580",
+                "estado": ""
+              },
+              {
+                "entregada": "99580",
+                "documento": "NC",
+                "fechaEntrega": "2026-01-16",
+                "saldo": "100000",
+                "estado": ""
+              }
+            ]
+          },
           {
             "fecha": "2026-01-26",
             "oc": "20460",
@@ -93,7 +130,7 @@ window.SEED_CLIENTS = [
             ]
           }
         ],
-        "totalPendiente": "0"
+        "totalPendiente": "100000"
       },
       {
         "producto": "AIKAS BLANCO 420 g",
@@ -284,16 +321,16 @@ window.SEED_CLIENTS = [
             "cantidadOC": "150000",
             "entregas": [
               {
-                "entregada": "",
-                "documento": "",
+                "entregada": "146000",
+                "documento": "41794",
                 "fechaEntrega": "2026-07-21",
-                "saldo": "150000",
-                "estado": "PENDIENTE POR DESPACHAR"
+                "saldo": "108206",
+                "estado": "CERRADA"
               }
             ]
           }
         ],
-        "totalPendiente": "150000"
+        "totalPendiente": "0"
       },
       {
         "producto": "AIKAS ÁRABE 5 UNIDADES",
@@ -443,7 +480,7 @@ window.SEED_CLIENTS = [
               {
                 "entregada": "",
                 "documento": "",
-                "fechaEntrega": "2026-07-24",
+                "fechaEntrega": "2026-07-30",
                 "saldo": "80000",
                 "estado": "PENDIENTE POR DESPACHAR"
               }
@@ -489,16 +526,16 @@ window.SEED_CLIENTS = [
             "cantidadOC": "40000",
             "entregas": [
               {
-                "entregada": "",
-                "documento": "",
+                "entregada": "44000",
+                "documento": "41795",
                 "fechaEntrega": "2026-07-21",
-                "saldo": "40000",
-                "estado": "PENDIENTE POR DESPACHAR"
+                "saldo": "-4000",
+                "estado": "CERRADA"
               }
             ]
           }
         ],
-        "totalPendiente": "40000"
+        "totalPendiente": "0"
       },
       {
         "producto": "BRIOCHE 680 g",
@@ -1134,16 +1171,23 @@ window.SEED_CLIENTS = [
             "cantidadOC": "140000",
             "entregas": [
               {
-                "entregada": "",
-                "documento": "",
-                "fechaEntrega": "",
-                "saldo": "140000",
-                "estado": "ABIERTA SIN ABONO"
+                "entregada": "87000",
+                "documento": "41759",
+                "fechaEntrega": "2026-07-02",
+                "saldo": "53000",
+                "estado": "CERRADA"
+              },
+              {
+                "entregada": "65000",
+                "documento": "41765",
+                "fechaEntrega": "2026-07-07",
+                "saldo": "-12000",
+                "estado": ""
               }
             ]
           }
         ],
-        "totalPendiente": "140000"
+        "totalPendiente": "0"
       },
       {
         "producto": "B. FUERZA DE VENTA TRANSPARENTE 60+15+15X120X0.014",
