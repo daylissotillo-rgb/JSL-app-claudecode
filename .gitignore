@@ -2,3 +2,8 @@ node_modules/
 scratchpad/
 *.log
 .DS_Store
+
+# Entorno / secretos — la API key NUNCA se versiona
+.env
+.env.*
+.vercel

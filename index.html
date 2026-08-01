@@ -59,6 +59,9 @@
           <select id="statusFilter" class="status-filter">
             <option value="">Todos los estados</option>
           </select>
+          <button id="botiOpen" class="boti-launch" title="Boti — Tu Asistente Financiero" aria-label="Abrir Boti">
+            <span class="boti-launch-ico">🤖</span> Boti
+          </button>
         </div>
       </header>
 
@@ -80,7 +83,28 @@
 
   <div id="toast" class="toast" hidden></div>
 
+  <!-- Boti — Asistente financiero (panel de pantalla completa) -->
+  <div id="botiPanel" class="boti-panel" hidden>
+    <header class="boti-header">
+      <button id="botiBack" class="boti-back" type="button">← Inicio</button>
+      <div class="boti-id">
+        <span class="boti-avatar">🤖</span>
+        <div>
+          <div class="boti-name">Boti</div>
+          <div class="boti-role">Tu Asistente Financiero</div>
+        </div>
+      </div>
+      <div class="boti-cost" id="botiSessionCost" title="Costo acumulado de la sesión">$0.0000</div>
+    </header>
+    <div class="boti-messages" id="botiMessages" aria-live="polite"></div>
+    <form class="boti-inputbar" id="botiForm" autocomplete="off">
+      <input id="botiInput" type="text" placeholder="Pregúntale a Boti sobre tus despachos…" aria-label="Mensaje para Boti" />
+      <button id="botiSend" type="submit" class="btn btn-primary" disabled>Enviar</button>
+    </form>
+  </div>
+
   <script src="assets/data.js"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/boti.js"></script>
 </body>
 </html>

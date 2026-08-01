@@ -801,6 +801,62 @@
     });
   }
 
+  /* --------------------- API para Boti (asistente) --------------------- */
+  // Construye el resumen financiero a partir del estado YA computado por la
+  // app (mismas funciones orderStats/productStats que usa el dashboard),
+  // sin releer localStorage desde cero.
+  function botiSummary() {
+    const c = activeClient();
+    if (!c) return null;
+    let cantOC = 0, entregado = 0, saldoPend = 0, ordenes = 0, entregas = 0;
+    const byStatus = {};
+    c.productos.forEach((p) => {
+      p.ordenes.forEach((o) => {
+        ordenes++;
+        const s = orderStats(o);
+        if (s.cantOC !== null) cantOC += s.cantOC;
+        entregado += s.entregado;
+        if (s.saldo !== null && s.saldo > 0) saldoPend += s.saldo;
+        entregas += s.numEntregas;
+        byStatus[s.cls.key] = (byStatus[s.cls.key] || 0) + 1;
+      });
+    });
+    const cerradas = (byStatus.cerrada || 0) + (byStatus.cerrada_exc || 0);
+    const abiertas = ordenes - cerradas;
+    const pct = cantOC > 0 ? Math.min(100, Math.round((entregado / cantOC) * 100)) : 0;
+    const porEstado = ALL_STATUS.filter(([k]) => byStatus[k]).map(([k, l]) => ({
+      estado: l,
+      cantidad: byStatus[k],
+    }));
+    const topPendientes = c.productos
+      .map((p) => ({ p, s: productStats(p) }))
+      .filter((x) => x.s.saldoPend > 0)
+      .sort((a, b) => b.s.saldoPend - a.s.saldoPend)
+      .slice(0, 8)
+      .map((x) => ({
+        producto: x.p.producto,
+        pedido: x.s.cantOC,
+        entregado: x.s.entregado,
+        saldo: x.s.saldoPend,
+      }));
+    return {
+      cliente: c.cliente,
+      productos: c.productos.length,
+      ordenes,
+      entregas,
+      unidadesPedidas: cantOC,
+      unidadesEntregadas: entregado,
+      pctCumplido: pct,
+      saldoPendiente: saldoPend,
+      ocAbiertas: abiertas,
+      ocCerradas: cerradas,
+      porEstado,
+      topPendientes,
+    };
+  }
+
+  window.DespachosBoti = { getSummary: botiSummary, fmt };
+
   /* ------------------------------- Init -------------------------------- */
   load();
   bind();
