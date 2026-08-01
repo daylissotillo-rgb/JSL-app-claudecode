@@ -59,10 +59,15 @@ export default async function handler(req, res) {
   // 4) API key configurada.
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) {
+    // Diagnóstico seguro: solo NOMBRES de variables que se parezcan a la key
+    // (nunca valores). Ayuda a detectar typos como ANTROPIC_API_KEY.
+    const parecidas = Object.keys(process.env).filter((k) => /anthropic|api.?key/i.test(k));
+    const pista = parecidas.length
+      ? " Variables parecidas encontradas: " + parecidas.join(", ") + " (¿el nombre es exactamente ANTHROPIC_API_KEY?)."
+      : " No hay ninguna variable con ese nombre en este deployment (¿guardada en Production? ¿deployment nuevo tras guardarla?).";
     return res.status(500).json({
       error:
-        "Falta configurar ANTHROPIC_API_KEY en el servidor. " +
-        "Agrégala en Vercel → Settings → Environment Variables y vuelve a desplegar.",
+        "Falta configurar ANTHROPIC_API_KEY en el servidor." + pista,
     });
   }
 
